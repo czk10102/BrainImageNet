@@ -9,7 +9,7 @@ def send(address, attachment):
     password = ''
     toaddrs = address
  
-    content = 'Dear BrainImageNet user:\n\nThank you very much for your interest in our work. The online sex prediction has finished based on the brain imaging data you uploaded. Please check the attachment for the results. Note for the prediction results, 1: Male   0: Female (Prediction close to 1 means male).\n\nBest,\n\nThe BrainImageNet Team (The R-fMRI Lab http://rfmri.org)'
+    content = 'Dear BrainImageNet user, \n\nThank you very much for your interest in our work. The online sex prediction has finished based on the brain imaging data you uploaded. Please check the attachment for the results. \n\nNote for the prediction results, 1: Male   0: Female (Prediction close to 1 means male).\n\nBest,\n\nThe BrainImageNet Team (The R-fMRI Lab http://rfmri.org)'
     textApart = MIMEText(content)
  
 #         imageFile = '1.png'
