@@ -584,7 +584,7 @@ function email3(response, request) {
         ' margin: 0;\n' +
         ' padding: 20px 0;\n' +
         ' color: darkorange;\n' +
-        ' text-shadow: 3px 3px 1px ghostwhite;">BrainImageNet: \nSex Prediction</h1>' +
+        ' text-shadow: 3px 3px 1px ghostwhite;">BrainImageNet: \nAD Prediction</h1>' +
         '<img src="logo" alt="DPABI" height="500px" width="=500px" align="center">' +
         '<p style="line-height: 2">It will take some time (minutes or tens of minutes), please wait...</p>' +
         '</body>' +
@@ -625,8 +625,10 @@ function wc1predict_AD(response, error, fields, files) {
             var cmdStr = "unzip " + finalpath + " -d " + "./DataUpload/" + SubfolderName + "/UNZIP/";
         }
         execSync(cmdStr);
-        cmdStr2 = "python -c \"from Brain_Prediction_AD import Gender_Classifier; Gender_Classifier('./DataUpload/" + SubfolderName + "/UNZIP','./Predictions/" + SubfolderName + "','aaa');\"";
+        cmdStr2 = "python -c \"from Brain_Prediction_AD import AD_Classifier; AD_Classifier('./DataUpload/" + SubfolderName + "/UNZIP','./Predictions/" + SubfolderName + "','aaa');\"";
+        console.log(cmdStr2);
         execSync(cmdStr2);
+
         cmdStr3 = "python -c \"from sendemail import send; send('" + fields.emailaddress + "','./Predictions/" + SubfolderName + "/Prediction.txt');\"";
         if (fields.emailaddress !== '') {
             execSync(cmdStr3);
@@ -696,7 +698,7 @@ function email4(response, request) {
         ' margin: 0;\n' +
         ' padding: 20px 0;\n' +
         ' color: darkorange;\n' +
-        ' text-shadow: 3px 3px 1px ghostwhite;">BrainImageNet: \nSex Prediction</h1>' +
+        ' text-shadow: 3px 3px 1px ghostwhite;">BrainImageNet: \nAD Prediction</h1>' +
         '<img src="logo" alt="DPABI" height="500px" width="=500px" align="center">' +
         '<p style="line-height: 2">It will take some time (minutes or tens of minutes), please wait...</p>' +
         '</body>' +
@@ -746,7 +748,7 @@ function T1predict_AD(request, response, error, fields, files) {
         execSync(cmdStr1);
         cmdStr2 = "python -c \"from transdoc import trans; trans('./DataUpload/" + SubfolderName + "/UNZIP','./DataUpload/" + SubfolderName + "/wc1');\"";
         execSync(cmdStr2);
-        cmdStr3 = "python -c \"from Brain_Prediction_AD import Gender_Classifier; Gender_Classifier('./DataUpload/" + SubfolderName + "/wc1','./Predictions/" + SubfolderName + "','aaa');\"";
+        cmdStr3 = "python -c \"from Brain_Prediction_AD import AD_Classifier; AD_Classifier('./DataUpload/" + SubfolderName + "/wc1','./Predictions/" + SubfolderName + "','aaa');\"";
         execSync(cmdStr3);
         cmdStr4 = "python -c \"from sendemail import send; send('" + fields.emailaddress + "','./Predictions/" + SubfolderName + "/Prediction.txt');\"";
         if (fields.emailaddress !== '') {
